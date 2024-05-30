@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Compose_Clean_Arch"
         tools:targetApi="31">
         <activity
+            android:name=".screens.welcomeApp.WelcomeScreenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_welcome_screen"
+            android:theme="@style/Theme.Compose_Clean_Arch" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

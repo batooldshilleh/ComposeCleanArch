@@ -8,12 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.compose_clean_arch.R
 import com.example.compose_clean_arch.ui.theme.Compose_Clean_ArchTheme
 
 @Composable
-fun WelcomeScreen(viewModel: WelcomeViewModel = viewModel()) {
+fun WelcomeScreen(viewModel: WelcomeViewModel = hiltViewModel()) {
     val nameState = remember { mutableStateOf("") }
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->

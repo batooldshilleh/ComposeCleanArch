@@ -8,12 +8,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose_clean_arch.R
 import com.example.compose_clean_arch.ui.theme.Compose_Clean_ArchTheme
 
 @Composable
-fun WelcomeScreen() {
-    val (text, setText) = remember { mutableStateOf("") }
+fun WelcomeScreen(viewModel: WelcomeViewModel = viewModel()) {
+    val nameState = remember { mutableStateOf("") }
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Box(
@@ -23,9 +24,11 @@ fun WelcomeScreen() {
             contentAlignment = Alignment.Center
         ) {
             WelcomeContent(
-                text = text,
-                onTextChange = setText,
-                onButtonClick = { /* Handle button click */ }
+                name = nameState.value,
+                onNameSubmit = {
+                    nameState.value = it
+                    viewModel.setName(it)
+                }
             )
         }
     }
@@ -33,30 +36,35 @@ fun WelcomeScreen() {
 
 @Composable
 fun WelcomeContent(
-    text: String,
-    onTextChange: (String) -> Unit,
-    onButtonClick: () -> Unit,
+    name: String,
+    onNameSubmit: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var textFieldValue by remember { mutableStateOf("") }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        Text(text = stringResource(id = R.string.welcome_default))
+
+        Text(
+            text = name.ifBlank { stringResource(id = R.string.welcome_default) },
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
         Spacer(modifier = Modifier.height(16.dp))
         TextField(
-            value = text,
-            onValueChange = onTextChange,
-            label = { Text(text = stringResource(id = R.string.enter_name)) },
+            value = textFieldValue,
+            onValueChange = { textFieldValue = it },
+            label = { Text("Enter your name") },
             modifier = Modifier.padding(bottom = 16.dp)
         )
         OutlinedButton(
-            onClick = onButtonClick,
+            onClick = { onNameSubmit(textFieldValue) },
             modifier = Modifier
                 .width(150.dp)
                 .height(50.dp)
         ) {
-            Text(text = stringResource(id = R.string.welcome_btn_text))
+            Text(text = stringResource(id = R.string.post_name))
         }
     }
 }

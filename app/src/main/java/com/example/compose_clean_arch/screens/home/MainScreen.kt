@@ -51,6 +51,6 @@ fun WelcomeButton(navController: NavHostController, modifier: Modifier = Modifie
             .width(150.dp)
             .height(50.dp)
     ) {
-        Text(text = stringResource(id = R.string.post_name))
+        Text(text = stringResource(id = R.string.welcome_btn_text))
     }
 }

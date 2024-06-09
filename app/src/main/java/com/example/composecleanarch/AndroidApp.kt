@@ -1,4 +1,4 @@
-package com.example.compose_clean_arch
+package com.example.composecleanarch
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.compose_clean_arch"
+    namespace = "com.example.composecleanarch"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.compose_clean_arch"
+        applicationId = "com.example.composecleanarch"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -81,4 +81,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    //state
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:1.7.0-alpha07")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:1.7.0-alpha07")
 }
+

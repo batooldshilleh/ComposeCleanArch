@@ -1,4 +1,4 @@
-package com.example.compose_clean_arch
+package com.example.composecleanarch
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

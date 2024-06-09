@@ -1,4 +1,4 @@
-package com.example.compose_clean_arch.data.nave
+package com.example.composecleanarch.data.nave
 
 sealed class NavRoutes(val route: String) {
     object Main : NavRoutes("main_screen")

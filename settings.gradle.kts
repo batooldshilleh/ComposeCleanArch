@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Compose_Clean_Arch"
+rootProject.name = "ComposeCleanArch"
 include(":app")
  

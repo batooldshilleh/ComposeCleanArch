@@ -1,7 +1,9 @@
 
 .gradle
 
-
+/.idea/libraries
+/.idea/workspace.xml
+/local.properties
 
 .DS_Store
 /build
@@ -19,10 +21,7 @@ bin/
 *.dex
 .idea
 
-
-
 *.iml
-
 
 .idea/
 

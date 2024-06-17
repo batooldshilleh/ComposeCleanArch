@@ -8,10 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,25 +23,22 @@ import com.example.composecleanarch.ui.theme.ComposeCleanArchTheme
 
 @Composable
 fun WelcomeScreen(viewModel: WelcomeViewModel = hiltViewModel()) {
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val textFieldValue = viewModel.textFildValue.collectAsStateWithLifecycle(lifecycleOwner)
-    val name = viewModel.name.collectAsStateWithLifecycle(lifecycleOwner)
+    val textFieldValue = viewModel.textFildValue.collectAsStateWithLifecycle()
+    val name = viewModel.name.collectAsStateWithLifecycle()
 
-    CompositionLocalProvider(localWelcomeState provides viewModel) {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding),
-                contentAlignment = Alignment.Center
-            ) {
-                WelcomeContent(
-                    name = name.value,
-                    textFieldValue = textFieldValue.value,
-                    onValueChange = { viewModel.setTextFildValue(it) },
-                    onNameSubmit = { viewModel.setName(it) }
-                )
-            }
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            contentAlignment = Alignment.Center
+        ) {
+            WelcomeContent(
+                name = name.value,
+                textFieldValue = textFieldValue.value,
+                onValueChange = { viewModel.setTextFildValue(it) },
+                onNameSubmit = { viewModel.setName(it) }
+            )
         }
     }
 }

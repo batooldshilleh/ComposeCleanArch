@@ -23,7 +23,6 @@ import com.example.composecleanarch.ui.theme.ComposeCleanArchTheme
 
 @Composable
 fun WelcomeScreen(viewModel: WelcomeViewModel = hiltViewModel()) {
-    val textFieldValue = viewModel.textFildValue.collectAsStateWithLifecycle()
     val name = viewModel.name.collectAsStateWithLifecycle()
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -35,19 +34,16 @@ fun WelcomeScreen(viewModel: WelcomeViewModel = hiltViewModel()) {
         ) {
             WelcomeContent(
                 name = name.value,
-                textFieldValue = textFieldValue.value,
-                onValueChange = { viewModel.setTextFildValue(it) },
                 onNameSubmit = { viewModel.setName(it) }
             )
         }
     }
 }
 
+
 @Composable
 fun WelcomeContent(
     name: String,
-    textFieldValue: String,
-    onValueChange: (String) -> Unit,
     onNameSubmit: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -60,13 +56,14 @@ fun WelcomeContent(
         TextViewComponent(name.ifEmpty { defaultText })
         Spacer(modifier = Modifier.height(16.dp))
         TextFieldComponent(
-            textFieldValue = textFieldValue,
-            onValueChange = onValueChange,
+            textFieldValue = "",
+            onValueChange = {},
             label = "Enter your name"
         )
-        OutlinedButtonComponent(onNameSubmit = onNameSubmit, textFieldValue = textFieldValue)
+        OutlinedButtonComponent(onNameSubmit = onNameSubmit, textFieldValue = "")
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

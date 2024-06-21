@@ -4,6 +4,7 @@ plugins {
     id("org.sonarqube") version "5.0.0.4638"
     id ("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -70,9 +71,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Dependency versions
-    val navVersion = "2.7.7"
-
     // Navigation dependencies
     implementation(libs.androidx.navigation.compose)
 
@@ -85,5 +83,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.lifecycle.runtime.compose)
+
+    //Room
+    implementation ("androidx.room:room-runtime:2.6.0")
+    kapt ("androidx.room:room-compiler:2.6.0")
+    implementation ("androidx.room:room-ktx:2.6.0")
 }
 

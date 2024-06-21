@@ -1,14 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.sonarqube") version "5.0.0.4638"
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
-    namespace = "com.example.compose_clean_arch"
+    namespace = "com.example.composecleanarch"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.compose_clean_arch"
+        applicationId = "com.example.composecleanarch"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -66,4 +70,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Navigation dependencies
+    implementation(libs.androidx.navigation.compose)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    //state
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.lifecycle.runtime.compose)
+
+    //Room
+    implementation ("androidx.room:room-runtime:2.6.0")
+    kapt ("androidx.room:room-compiler:2.6.0")
+    implementation ("androidx.room:room-ktx:2.6.0")
 }
+

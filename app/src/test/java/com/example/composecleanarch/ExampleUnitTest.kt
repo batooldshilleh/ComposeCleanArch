@@ -1,4 +1,4 @@
-package com.example.compose_clean_arch
+package com.example.composecleanarch
 
 import org.junit.Test
 

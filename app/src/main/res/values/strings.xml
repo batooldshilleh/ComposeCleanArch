@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Compose_Clean_Arch</string>
+    <string name="app_name">ComposeCleanArch</string>
+    <string name="title_activity_welcome_screen">WelcomeScreenActivity</string>
+
+    //welcome app
+    <string name="welcome_btn_text">State Flow</string>
+    <string name="post_name">Show Message</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="welcome_default">Welcome to the App!</string>
+
 </resources>

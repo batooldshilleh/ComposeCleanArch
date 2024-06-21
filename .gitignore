@@ -1,8 +1,9 @@
 
 .gradle
-/local.properties
-/.idea/workspace.xml
+
 /.idea/libraries
+/.idea/workspace.xml
+/local.properties
 
 .DS_Store
 /build
@@ -10,7 +11,6 @@
 .externalNativeBuild
 
 .cxx
-local.properties
 /build
 build/
 app/build/
@@ -21,10 +21,7 @@ bin/
 *.dex
 .idea
 
-
-
 *.iml
-
 
 .idea/
 
@@ -52,6 +49,4 @@ bin/
 gen/
 .gradle/
 build/
-local.properties
 *.log
-*.properties
